@@ -1,0 +1,41 @@
+\documentclass[spanish]{Notes}
+\usepackage{babel}
+
+\input{preamble}
+
+
+
+\begin{document}
+\section{Preliminares}
+
+\subsection{Distintos tipos de bases}
+
+Considera el numero $x = 123456$. Aunque es claro que significa x, formalmente debemos entender que 
+
+\[x = 1 \cdot 10^5 + 2 \cdot 10^4 + 3 \cdot 10^3 + 4 \cdot 10^2 + 5 \cdot 10 + 6,\]
+
+pues de esta forma, los resultados previos de matematicas como sucesiones y series se pueden utilizar para analizar las propiedades de los numeros. Sin embargo, en analisis numerico no es conveniente utilizar potencias de 10 para representar los numeros, pues la computadora utiliza cables y electricidad para funcionar, de modo que es facil representar 0 y  1 como la presencia/ausencia de electricidad.
+
+\begin{theorem}
+Para todo numero x existe una sucesion \[a_0, a_1, a_n\ldots\] tal que 
+
+\[x = \sum_{i = -\infty}^n a_i\cdot b^i,\]
+
+donde \[b > 1 \] es un numeronatural, llamado la base.  
+\end{theorem}
+
+La sucesion \[a_0, a_1, \ldots\] del teorema anterior suele expresarse asi:
+
+\[x = (a_n, \ldots, a_1, a_0, \ldots)_b\]
+
+En particular si $b = 2$, la base se llama binaria. y si la base es decimal, entonces por definicion
+
+\[123456 = (1, 2, 3, 4, 5, 6)_{10}\]
+
+\begin{exercise}
+Investiga o demuestra que si en algun momento la sucesion \[\{a_k\}\] se convierte en una sucesion periodica, el numero x es racional. El reciproco tambien es cierto, pero es mas dificil de probar.
+\end{exercise}
+
+\subsection{Numeros binarios}
+
+\end{document}
