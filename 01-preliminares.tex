@@ -1,11 +1,13 @@
-\documentclass[spanish]{Notes}
+\documentclass[spanish]{amsart}
 \usepackage{babel}
-
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
 \input{preamble}
 
-
+ 
 
 \begin{document}
+\maketitle
 \section{Preliminares}
 
 \subsection{Distintos tipos de bases}
@@ -37,5 +39,48 @@ Investiga o demuestra que si en algun momento la sucesion \[\{a_k\}\] se convier
 \end{exercise}
 
 \subsection{Numeros binarios}
+En general, la computadora guarda todos los datos en \emph{binario}, de modo que existen varios estandares para representar los diferentes tipos de datos: \emph{caracteres, enteros, flotantes, etc.}, cada uno tiene un tamaño predefinido. Por otro lado, representar números binarios, o pensar en el valor de un número en potencias de dos puede resultar laborioso, pues por ejemplo, el número $95578$, tiene la representación binaria $10111010101011010$, mucho más larga que en decimal, de modo que es más conveniente utilizar alguna otra base para expresar el número de manera humanamente entendible. Por razones históricas, se acostumbra representar los datos de la computadora en \emph{formato hexadecimal}.
 
+\begin{definition}
+  La notación $0b\,a_1\ldots a_n$ representa un número en formato binario, y la notación $0x\,a_1\ldots a_k$ lo representa en hexadecimal, donde para el caso binario los dígitos $a_i \in \{0, 1\}$, pero para evitar confusión, en el caso hexadecimal los dígitos $a_i \in \{0,  \ldots, 9, a, b, c, d, e, f\}$.
+\end{definition}
+
+Así, en nuestro ejemplo
+\[95578 = 0b\,10111010101011010 = 0x\,1755a,\]
+
+o en \emph{python}:
+
+\begin{pyconcode}
+  >>>> x = 95578
+  >>>> bin(x)
+  0b10111010101011010
+  >>>> hex(x)
+  0x1755a
+\end{pyconcode}
+
+\subsection{Numeros de punto flotante}
+\begin{definition}
+  Un número $x$ se expresa en notación científica si puede escribirse de la forma 
+\[x = \pm r \times 10^n,\]
+donde $1/10 \leq r < 1$. El número $r$ se llama la \emph{mantissa normalizada}
+\end{definition}
+
+Esta definición se extiende de manera natural a cualquier otra base para representar al número, en particular, en binario
+\[x = \pm r \times 2^n,\]
+donde $1/2 \leq r < 1$. Como la computadora tiene una capacidad de almacenamiento finito, en realidad, solo una pequeña parte de los números reales puede representarse dentro de la computadora con números de punto flotante.
+
+\begin{exercise}
+  \begin{itemize}
+  \item Cuántos números de punto flotante pueden expresarse con una mantissa de tres \emph{bits} y un exponente de tres bits:
+\[x = \pm(0.b_1b_2b_3) \times 2^{\pm k},\]
+$(k, b_i \in \{0, 1\}).$
+\item Con hipotesis similares, cuántos números pueden escribirse en base tres?.
+  \end{itemize}
+Este ejercicio podria ser más fácil de resolver con un programa.
+\end{exercise}
 \end{document}
+
+
+
+
+
