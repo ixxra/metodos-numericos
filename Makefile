@@ -2,7 +2,10 @@ PARSER_PATH = "src/parser/tex2html.rb"
 PARSER = ruby ${PARSER_PATH}
 
 notes:
-	cd latex && pdflatex -shell-escape 01-preliminares.tex
+	cd latex && pdflatex -shell-escape 01-preliminares
+	cd latex && bibtex 01-preliminares
+	cd latex && pdflatex -shell-escape 01-preliminares
+	cd latex && pdflatex -shell-escape 01-preliminares
 	mv latex/01-preliminares.pdf pdf/
 	
 

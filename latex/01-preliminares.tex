@@ -12,14 +12,14 @@
 
 \subsection{Distintos tipos de bases}
 
-Considera el numero $x = 123456$. Aunque es claro que significa x, formalmente debemos entender que 
+Considera el numero $x = 123456$. Aunque es claro que significa $x$, formalmente debemos entender que 
 
 \[x = 1 \cdot 10^5 + 2 \cdot 10^4 + 3 \cdot 10^3 + 4 \cdot 10^2 + 5 \cdot 10 + 6,\]
 
 pues de esta forma, los resultados previos de matematicas como sucesiones y series se pueden utilizar para analizar las propiedades de los numeros. Sin embargo, en analisis numerico no es conveniente utilizar potencias de 10 para representar los numeros, pues la computadora utiliza cables y electricidad para funcionar, de modo que es facil representar 0 y  1 como la presencia/ausencia de electricidad.
 
 \begin{theorem}
-Para todo numero x existe una sucesion \[a_0, a_1, a_n\ldots\] tal que 
+Para todo numero $x$ existe una sucesion \[a_0, a_1, a_n\ldots\] tal que 
 
 \[x = \sum_{i = -\infty}^n a_i\cdot b^i,\]
 
@@ -30,7 +30,7 @@ La sucesion \[a_0, a_1, \ldots\] del teorema anterior suele expresarse asi:
 
 \[x = (a_n, \ldots, a_1, a_0, \ldots)_b\]
 
-En particular si $b = 2$, la base se llama binaria. y si la base es decimal, entonces por definicion
+En particular si $b = 2$, la base se llama binaria, y si la base es decimal, entonces por definicion
 
 \[123456 = (1, 2, 3, 4, 5, 6)_{10}\]
 
@@ -75,9 +75,18 @@ donde $1/2 \leq r < 1$. Como la computadora tiene una capacidad de almacenamient
 \[x = \pm(0.b_1b_2b_3) \times 2^{\pm k},\]
 $(k, b_i \in \{0, 1\}).$
 \item Con hipotesis similares, cuántos números pueden escribirse en base tres?.
-  \end{itemize}
+\item Dibuja los puntos diferentes que obtuviste, de preferencia, utiliza la computadora para hacer esto.
+\end{itemize}
 Este ejercicio podria ser más fácil de resolver con un programa.
 \end{exercise}
+
+\begin{definition}
+Si en el transcurso de un cálculo, se produce un número flotante $\pm r \times 2^m$, donde $m$ está fuera del rango permitido, se dice que se tiene un \emph{overflow} o \emph{underflow}. En general, ambos casos se llaman un \emph{desbordamiento}.  
+\end{definition}
+
+\nocite{*}
+\bibliography{notes}{}
+\bibliographystyle{plain}
 \end{document}
 
 
