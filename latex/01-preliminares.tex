@@ -84,6 +84,32 @@ Este ejercicio podria ser más fácil de resolver con un programa.
 Si en el transcurso de un cálculo, se produce un número flotante $\pm r \times 2^m$, donde $m$ está fuera del rango permitido, se dice que se tiene un \emph{overflow} o \emph{underflow}. En general, ambos casos se llaman un \emph{desbordamiento}.  
 \end{definition}
 
+\begin{definition}
+  Un número flotante de punto fijo es un número real representable en la computadora utilizando una palabra de 32-bits
+\end{definition}
+
+Cómo se representa un número flotante depende de la implementación de la computadora, pero en general se acostumbra seguir el estandard de la \emph{IEEE}. Dado que un  número flotante es de la forma
+
+\[\pm q \times 2^m,\]
+
+En general, la forma de la representación es 
+
+\[(-1)^s \times 2^{c - 127} \times (1.f)_2,\]
+
+es decir, que el bit más a la izquierda es utiliza para determinar el signo de la mantissa, $s = 0$ corresponde a $+$ y $s = 1$ corresponde a $-$. Los siguientes ocho bits corresponden al entero  no negativo $c$. Finalmente, los últimos 23 bits corresponden a $f$ en la mantissa \emph{normalizada}, pues como el primer dígito siempre es 1, no es necesario guardarlo.
+
+\begin{remark}
+  Hay una excepcion a esta regla, pues para el número 0 son ambiguos tanto el signo, como el exponente y la mantissa no puede tener un 1, sin embargo es bastante obvio cómo representarlo. (\emph{cómo?})
+\end{remark}
+
+\begin{definition}
+  El \emph{epsilon de la máquina} es el número flotante más pequeño tal que $1 + \epsilon \neq 1$.
+\end{definition}
+
+Esta definición hace sentido, porque los números flotantes son finitos. Para un número de precisión simple (32 bits) se tiene $\epsilon = 2^{-23}$. (\emph{porque?}).
+
+
+
 \nocite{*}
 \bibliography{notes}{}
 \bibliographystyle{plain}
