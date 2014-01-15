@@ -108,7 +108,38 @@ es decir, que el bit más a la izquierda es utiliza para determinar el signo de 
 
 Esta definición hace sentido, porque los números flotantes son finitos. Para un número de precisión simple (32 bits) se tiene $\epsilon = 2^{-23}$. (\emph{porque?}).
 
+\begin{remark}
+  Como $2^{-23} \approx 1.2 \times 10^{-7}$, en un cálculo simple, con números flotantes de precisión simple, aproximadamente se obtienen seis cifras decimales exactas.
+\end{remark}
 
+\subsubsection{Números flotantes de precisión doble}
+
+Cuando se necesita más precisión que la que se puede obtener con los números de precisión simple, se utiliza los de precisión doble, estos son números flotantes con mantissa de 52 bits. 
+
+\begin{exercise}
+  Cuál es la precisión de un cálculo simple con flotantes dobles?
+\end{exercise}
+
+\begin{remark}
+  En \emph{python} los números tienen precisión arbitraria lo cual es muy costoso. En bibliotecas numéricas como \emph{numpy} los números flotantes tienen precisión doble por default.
+\end{remark}
+
+\begin{exercise}
+  \begin{itemize}
+  \item Determina la representación como número flotante simple del número $-23.1432$.
+  \item Determina qué número real corresponde al flotante $[2340ED01]_{16}$?
+  \end{itemize}
+\end{exercise}
+
+\begin{remark}
+  Es posible verificar la respuesta del segundo ejercicio en \emph{python} de la siguiente manera:
+  \begin{pythoncode}
+    import struct
+
+    x = '\x23\x40\xED\x01'
+    struct.unpack('!f', x)
+  \end{pythoncode}
+\end{remark}
 
 \nocite{*}
 \bibliography{notes}{}

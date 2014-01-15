@@ -27,7 +27,7 @@ PREAMBLE = '''<!DOCTYPE html>
 #src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 
 LOCALE = {'theorem' => "Teorema", 'exercise' => "Ejercicio", 
-    'definition' => "Definición"}
+    'definition' => "Definición", 'remark' => "Comentario"}
 
 
 puts PREAMBLE
