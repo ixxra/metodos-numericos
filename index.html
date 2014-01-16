@@ -2,40 +2,44 @@
 <document>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] }
       });
     </script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian"></script>
     <script type="text/javascript"
       src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
   </head>
   <body>
-  <div class="document panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">document</h3>
-    </div>
-    <div class="panel-body">
+<section class="container">
+
+ 
+
+<header><h1>Notas de Análisis Numérico</h1></header>
 <section>
-  <header><h1>Preliminares</h1></header>
+  <header><h2>Preliminares</h2></header>
+  <p>
 
 <section class="subsection">
-  <header><h2>Distintos tipos de bases</h2></header>
+  <header><h3>Distintos tipos de bases</h3></header>
+  <p>
 
-Considera el numero $x = 123456$. Aunque es claro que significa x, formalmente debemos entender que 
+Considera el numero $x = 123456$. Aunque es claro que significa $x$, formalmente debemos entender que 
 
 \[x = 1 \cdot 10^5 + 2 \cdot 10^4 + 3 \cdot 10^3 + 4 \cdot 10^2 + 5 \cdot 10 + 6,\]
 
 pues de esta forma, los resultados previos de matematicas como sucesiones y series se pueden utilizar para analizar las propiedades de los numeros. Sin embargo, en analisis numerico no es conveniente utilizar potencias de 10 para representar los numeros, pues la computadora utiliza cables y electricidad para funcionar, de modo que es facil representar 0 y  1 como la presencia/ausencia de electricidad.
 
-  <div class="theorem panel panel-default">
+  <div class="theorem panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">theorem</h3>
+      <h3 class="panel-title">Teorema</h3>
     </div>
     <div class="panel-body">
-Para todo numero x existe una sucesion \[a_0, a_1, a_n\ldots\] tal que 
+Para todo numero $x$ existe una sucesion \[a_0, a_1, a_n\ldots\] tal que 
 
 \[x = \sum_{i = -\infty}^n a_i\cdot b^i,\]
 
@@ -47,27 +51,29 @@ La sucesion \[a_0, a_1, \ldots\] del teorema anterior suele expresarse asi:
 
 \[x = (a_n, \ldots, a_1, a_0, \ldots)_b\]
 
-En particular si $b = 2$, la base se llama binaria. y si la base es decimal, entonces por definicion
+En particular si $b = 2$, la base se llama binaria, y si la base es decimal, entonces por definicion
 
 \[123456 = (1, 2, 3, 4, 5, 6)_{10}\]
 
-  <div class="exercise panel panel-default">
+  <div class="exercise panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title">exercise</h3>
+      <h3 class="panel-title">Ejercicio</h3>
     </div>
     <div class="panel-body">
 Investiga o demuestra que si en algun momento la sucesion \[\{a_k\}\] se convierte en una sucesion periodica, el numero x es racional. El reciproco tambien es cierto, pero es mas dificil de probar.
     </div>
   </div>
 
+</p>
 </section>
 <section class="subsection">
-  <header><h2>Numeros binarios</h2></header>
+  <header><h3>Numeros binarios</h3></header>
+  <p>
 En general, la computadora guarda todos los datos en <em>binario</em>, de modo que existen varios estandares para representar los diferentes tipos de datos: <em>caracteres, enteros, flotantes, etc.</em>, cada uno tiene un tamaño predefinido. Por otro lado, representar números binarios, o pensar en el valor de un número en potencias de dos puede resultar laborioso, pues por ejemplo, el número $95578$, tiene la representación binaria $10111010101011010$, mucho más larga que en decimal, de modo que es más conveniente utilizar alguna otra base para expresar el número de manera humanamente entendible. Por razones históricas, se acostumbra representar los datos de la computadora en <em>formato hexadecimal</em>.
 
   <div class="definition panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">definition</h3>
+      <h3 class="panel-title">Definición</h3>
     </div>
     <div class="panel-body">
   La notación $0b\,a_1\ldots a_n$ representa un número en formato binario, y la notación $0x\,a_1\ldots a_k$ lo representa en hexadecimal, donde para el caso binario los dígitos $a_i \in \{0, 1\}$, pero para evitar confusión, en el caso hexadecimal los dígitos $a_i \in \{0,  \ldots, 9, a, b, c, d, e, f\}$.
@@ -89,12 +95,14 @@ o en <em>python</em>:
   </code>
 </pre>
 
+</p>
 </section>
 <section class="subsection">
-  <header><h2>Numeros de punto flotante</h2></header>
+  <header><h3>Numeros de punto flotante</h3></header>
+  <p>
   <div class="definition panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">definition</h3>
+      <h3 class="panel-title">Definición</h3>
     </div>
     <div class="panel-body">
   Un número $x$ se expresa en notación científica si puede escribirse de la forma 
@@ -107,9 +115,9 @@ Esta definición se extiende de manera natural a cualquier otra base para repres
 \[x = \pm r \times 2^n,\]
 donde $1/2 \leq r &lt; 1$. Como la computadora tiene una capacidad de almacenamiento finito, en realidad, solo una pequeña parte de los números reales puede representarse dentro de la computadora con números de punto flotante.
 
-  <div class="exercise panel panel-default">
+  <div class="exercise panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title">exercise</h3>
+      <h3 class="panel-title">Ejercicio</h3>
     </div>
     <div class="panel-body">
 <ul>
@@ -117,12 +125,136 @@ donde $1/2 \leq r &lt; 1$. Como la computadora tiene una capacidad de almacenami
 \[x = \pm(0.b_1b_2b_3) \times 2^{\pm k},\]
 $(k, b_i \in \{0, 1\}).$
   <li>Con hipotesis similares, cuántos números pueden escribirse en base tres?.</li>
+  <li>Dibuja los puntos diferentes que obtuviste, de preferencia, utiliza la computadora para hacer esto.</li>
 </ul>
 Este ejercicio podria ser más fácil de resolver con un programa.
     </div>
   </div>
+
+  <div class="definition panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Definición</h3>
+    </div>
+    <div class="panel-body">
+Si en el transcurso de un cálculo, se produce un número flotante $\pm r \times 2^m$, donde $m$ está fuera del rango permitido, se dice que se tiene un <em>overflow</em> o <em>underflow</em>. En general, ambos casos se llaman un <em>desbordamiento</em>.  
     </div>
   </div>
+
+  <div class="definition panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Definición</h3>
+    </div>
+    <div class="panel-body">
+  Un número flotante de punto fijo es un número real representable en la computadora utilizando una palabra de 32-bits
+    </div>
+  </div>
+
+Cómo se representa un número flotante depende de la implementación de la computadora, pero en general se acostumbra seguir el estandard de la <em>IEEE</em>. Dado que un  número flotante es de la forma
+
+\[\pm q \times 2^m,\]
+
+En general, la forma de la representación es 
+
+\[(-1)^s \times 2^{c - 127} \times (1.f)_2,\]
+
+es decir, que el bit más a la izquierda es utiliza para determinar el signo de la mantissa, $s = 0$ corresponde a $+$ y $s = 1$ corresponde a $-$. Los siguientes ocho bits corresponden al entero  no negativo $c$. Finalmente, los últimos 23 bits corresponden a $f$ en la mantissa <em>normalizada</em>, pues como el primer dígito siempre es 1, no es necesario guardarlo.
+
+  <div class="remark panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Comentario</h3>
+    </div>
+    <div class="panel-body">
+  Hay una excepcion a esta regla, pues para el número 0 son ambiguos tanto el signo, como el exponente y la mantissa no puede tener un 1, sin embargo es bastante obvio cómo representarlo. (<em>cómo?</em>)
+    </div>
+  </div>
+
+  <div class="definition panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Definición</h3>
+    </div>
+    <div class="panel-body">
+  El <em>epsilon de la máquina</em> es el número flotante más pequeño tal que $1 + \epsilon \neq 1$.
+    </div>
+  </div>
+
+Esta definición hace sentido, porque los números flotantes son finitos. Para un número de precisión simple (32 bits) se tiene $\epsilon = 2^{-23}$. (<em>porque?</em>).
+
+  <div class="remark panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Comentario</h3>
+    </div>
+    <div class="panel-body">
+  Como $2^{-23} \approx 1.2 \times 10^{-7}$, en un cálculo simple, con números flotantes de precisión simple, aproximadamente se obtienen seis cifras decimales exactas.
+    </div>
+  </div>
+
+<section class="subsubsubsection">
+  <header><h4>Números flotantes de precisión doble</h4></header>
+  <p>
+
+Cuando se necesita más precisión que la que se puede obtener con los números de precisión simple, se utiliza los de precisión doble, estos son números flotantes con mantissa de 52 bits. 
+
+  <div class="exercise panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Ejercicio</h3>
+    </div>
+    <div class="panel-body">
+  Cuál es la precisión de un cálculo simple con flotantes dobles?
+    </div>
+  </div>
+
+  <div class="remark panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Comentario</h3>
+    </div>
+    <div class="panel-body">
+  En <em>python</em> los números tienen precisión arbitraria lo cual es muy costoso. En bibliotecas numéricas como <em>numpy</em> los números flotantes tienen precisión doble por default.
+    </div>
+  </div>
+
+  <div class="exercise panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Ejercicio</h3>
+    </div>
+    <div class="panel-body">
+<ul>
+    <li>Determina la representación como número flotante simple del número $-23.1432$.</li>
+    <li>Determina qué número real corresponde al flotante $[2340ED01]_{16}$?</li>
+</ul>
+    </div>
+  </div>
+
+  <div class="remark panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Comentario</h3>
+    </div>
+    <div class="panel-body">
+  Es posible verificar la respuesta del segundo ejercicio en <em>python</em> de la siguiente manera:
+
+<pre class="prettyprint lang-python linenums">
+  <code>
+    import struct
+
+    x = &#39;\x23\x40\xED\x01&#39;
+    struct.unpack(&#39;!f&#39;, x)
+ </code>
+</pre>
+
+<strong>Porqué será necesario escribir el número con esos extraños &#39;\x&#39;?</strong>
+    </div>
+  </div>
+
+\nocite{*}
+\bibliography{notes}{}
+\bibliographystyle{plain}
+    </div>
+  </div>
+
+
+
+
+
 </section>
-  </body>
+  </section>
+</body>
 </html>
