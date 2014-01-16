@@ -133,12 +133,15 @@ Cuando se necesita más precisión que la que se puede obtener con los números 
 
 \begin{remark}
   Es posible verificar la respuesta del segundo ejercicio en \emph{python} de la siguiente manera:
+
   \begin{pythoncode}
     import struct
 
     x = '\x23\x40\xED\x01'
     struct.unpack('!f', x)
   \end{pythoncode}
+
+\textbf{Porqué será necesario escribir el número con esos extraños '\x'?}
 \end{remark}
 
 \nocite{*}

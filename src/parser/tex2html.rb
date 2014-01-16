@@ -17,6 +17,7 @@ PREAMBLE = '''<!DOCTYPE html>
         tex2jax: { inlineMath: [["$","$"],["\\\\(","\\\\)"]] }
       });
     </script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian"></script>
     <script type="text/javascript"
       src="http://localhost:8000/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
@@ -36,6 +37,7 @@ ARGF.each do |line|
     env = nil
     line = CGI.escapeHTML(line)
     line.gsub!(/\\emph{([^}]*)}/, '<em>\1</em>')
+    line.gsub!(/\\textbf{([^}]*)}/, '<strong>\1</strong>')
 
 
     if line =~ /\\documentclass/
@@ -57,9 +59,15 @@ ARGF.each do |line|
     elsif match = line.match(/\\begin{pyconcode}/)
         puts "<pre>"
         puts "  <code>"
+    elsif match = line.match(/\\begin{pythoncode}/)
+        puts '<pre class="prettyprint lang-python linenums">'
+        puts '  <code>'
     elsif match = line.match(/\\end{pyconcode}/)
-        puts "  </code>"
-        puts "</pre>"
+        puts '  </code>'
+        puts '</pre>'
+    elsif match = line.match(/\\end{pythoncode}/)
+        puts ' </code>'
+        puts '</pre>'
     elsif match = line.match(/\\begin{(\w+)}/)
         env = match.captures[0]
         if env == 'theorem'
@@ -114,9 +122,11 @@ ARGF.each do |line|
         puts line
     end
 end
+
 if got_section
     puts "</section>"
 end
-puts '</section>'
-puts "  </body>"
+
+puts '  </section>'
+puts "</body>"
 puts "</html>"
