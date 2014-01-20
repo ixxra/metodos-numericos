@@ -6,9 +6,12 @@ got_section = false
 got_subsection = false
 got_subsubsection = false
 
-PREAMBLE = '''<!DOCTYPE html>
+PREAMBLE = '<!DOCTYPE html>
 <document>
   <head>
+    <title>
+        Notas de Analsis Numerico    
+    </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +26,7 @@ PREAMBLE = '''<!DOCTYPE html>
     </script>
   </head>
   <body>
-'''
+'
 
 #src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 
@@ -127,6 +130,6 @@ if got_section
     puts "</section>"
 end
 
-puts "  </section>"
-puts "</body>"
-puts "</html>"
+puts '</section>
+</body>
+</html>'
