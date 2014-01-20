@@ -141,15 +141,50 @@ Cuando se necesita más precisión que la que se puede obtener con los números 
     struct.unpack('!f', x)
   \end{pythoncode}
 
-\textbf{Porqué será necesario escribir el número con esos extraños '\x'?}
+\textbf{Porqué será necesario escribir el número con esos extraños '\textbackslash x'?}
 \end{remark}
+
+\subsection{Tipos de error de cálculo}
+
+En esta sección vamos a suponer que utilizamos un sistema de punto flotante de precisión simple, esto es, donde cada número se guarda en un espacio de 32bits, tal como se describió en la sección anterior.\\
+
+Sea $x = q \times 2^m$ un número real positivo escrito como un flotante normalizado.
+
+\begin{proposition}
+  Si $x = q \times 2^m$ es positivo y la mantissa está normalizada y es menor que 1, entonces $q \geq 1/2$.
+\end{proposition}
+
+\begin{proof}
+  Ejercicio.
+\end{proof}
+
+\begin{definition}
+Si $x = q \times 2^m$ es un número flotante positivo tal que el exponente está fuera del rango correspondiente (esto es, $m < -126$ o $m > 127$ en precisión simple, o su equivalente en precisión doble), se dice que estos números tienen un \emph{overflow} o un \emph{underflow}, según el exponente sobrepasa o es inferior al rango permitido respectivamente.  
+\end{definition}
+
+\begin{definition}
+  El proceso de reemplazar $x$ por el número de la máquina más cercano se llama \emph{corrección por redondeo} y el error asociado con este proceso se llama \emph{error de redondeo}.
+\end{definition}
+
+\begin{definition}
+  Sea 
+\[x = (0.1b_2b_3\ldots b_{24}b_{25}\ldots)_2\times 2^m\]
+un número real positivo. Si convertimos $x$ en un número flotante descartando los bits excedentes, $b_{25}, b_{26}, \ldots$, se dice que convertimos $x$ en un número flotante de precisión simple \emph{redondeando hacia abajo}. Si por otro lado, convertimos $x$ en un número de la máquina sumando una unidad en el bit 24 se dice que convertimos $x$ con un \emph{redondeo hacia arriba}.
+\end{definition}
+
+\begin{theorem}
+  Sea $fl(x)$ el número flotante de 32-bits más cercano al número $x$. El error relativo al redondear el número es 
+\[\left|\frac{x - fl(x)}{x}\right|,\]
+y una cota para el error relativo es $2^{-24}$.
+\end{theorem}
+
+\begin{theorem}
+  Si en lugar de seleccionar el flotante más cercano utilizamos redondeo hacia abajo, la cota para el error es $2^{-23}$.
+\end{theorem}
+
+
 
 \nocite{*}
 \bibliography{notes}{}
 \bibliographystyle{plain}
 \end{document}
-
-
-
-
-

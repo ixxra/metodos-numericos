@@ -38,10 +38,10 @@ ARGF.each do |line|
     line = CGI.escapeHTML(line)
     line.gsub!(/\\emph{([^}]*)}/, '<em>\1</em>')
     line.gsub!(/\\textbf{([^}]*)}/, '<strong>\1</strong>')
-
+    line.gsub!(/\\textbackslash+/, "\\")
 
     if line =~ /\\documentclass/
-        puts '<section class="container">'
+        puts "<section class=\"container\">"
     elsif line =~ /\\usepackage/
         #do nothing... silently pass
     elsif line =~ /\\input/
@@ -49,7 +49,7 @@ ARGF.each do |line|
     elsif line =~ /\\maketitle/
         #pass
     elsif line =~ /\\begin{document}/
-        puts '<header><h1>Notas de Análisis Numérico</h1></header>'
+        puts "<header><h1>Notas de Análisis Numérico</h1></header>"
     elsif match = line.match(/\\begin{itemize}/)
         puts "<ul>"
     elsif match = line.match(/\\end{itemize}/)
@@ -60,19 +60,19 @@ ARGF.each do |line|
         puts "<pre>"
         puts "  <code>"
     elsif match = line.match(/\\begin{pythoncode}/)
-        puts '<pre class="prettyprint lang-python linenums">'
-        puts '  <code>'
+        puts "<pre class=\"prettyprint lang-python linenums\">"
+        puts "  <code>"
     elsif match = line.match(/\\end{pyconcode}/)
-        puts '  </code>'
-        puts '</pre>'
+        puts "  </code>"
+        puts "</pre>"
     elsif match = line.match(/\\end{pythoncode}/)
-        puts ' </code>'
-        puts '</pre>'
+        puts " </code>"
+        puts "</pre>"
     elsif match = line.match(/\\begin{(\w+)}/)
         env = match.captures[0]
-        if env == 'theorem'
+        if env == "theorem"
             puts "  <div class=\"#{env} panel panel-primary\">"
-        elsif env == 'exercise'
+        elsif env == "exercise"
             puts "  <div class=\"#{env} panel panel-success\">"
         else
             puts "  <div class=\"#{env} panel panel-default\">"
@@ -127,6 +127,6 @@ if got_section
     puts "</section>"
 end
 
-puts '  </section>'
+puts "  </section>"
 puts "</body>"
 puts "</html>"
