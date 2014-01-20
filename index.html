@@ -2,8 +2,8 @@
 <document>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] }
@@ -240,20 +240,94 @@ Cuando se necesita más precisión que la que se puede obtener con los números 
  </code>
 </pre>
 
-<strong>Porqué será necesario escribir el número con esos extraños &#39;\x&#39;?</strong>
+<strong>Porqué será necesario escribir el número con esos extraños &#39;\ x&#39;?</strong>
     </div>
   </div>
+
+</p>
+</section>
+<section class="subsection">
+  <header><h3>Tipos de error de cálculo</h3></header>
+  <p>
+
+En esta sección vamos a suponer que utilizamos un sistema de punto flotante de precisión simple, esto es, donde cada número se guarda en un espacio de 32bits, tal como se describió en la sección anterior.\\
+
+Sea $x = q \times 2^m$ un número real positivo escrito como un flotante normalizado.
+
+  <div class="proposition panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body">
+  Si $x = q \times 2^m$ es positivo y la mantissa está normalizada y es menor que 1, entonces $q \geq 1/2$.
+    </div>
+  </div>
+
+  <div class="proof panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body">
+  Ejercicio.
+    </div>
+  </div>
+
+  <div class="definition panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Definición</h3>
+    </div>
+    <div class="panel-body">
+Si $x = q \times 2^m$ es un número flotante positivo tal que el exponente está fuera del rango correspondiente (esto es, $m &lt; -126$ o $m &gt; 127$ en precisión simple, o su equivalente en precisión doble), se dice que estos números tienen un <em>overflow</em> o un <em>underflow</em>, según el exponente sobrepasa o es inferior al rango permitido respectivamente.  
+    </div>
+  </div>
+
+  <div class="definition panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Definición</h3>
+    </div>
+    <div class="panel-body">
+  El proceso de reemplazar $x$ por el número de la máquina más cercano se llama <em>corrección por redondeo</em> y el error asociado con este proceso se llama <em>error de redondeo</em>.
+    </div>
+  </div>
+
+  <div class="definition panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Definición</h3>
+    </div>
+    <div class="panel-body">
+  Sea 
+\[x = (0.1b_2b_3\ldots b_{24}b_{25}\ldots)_2\times 2^m\]
+un número real positivo. Si convertimos $x$ en un número flotante descartando los bits excedentes, $b_{25}, b_{26}, \ldots$, se dice que convertimos $x$ en un número flotante de precisión simple <em>redondeando hacia abajo</em>. Si por otro lado, convertimos $x$ en un número de la máquina sumando una unidad en el bit 24 se dice que convertimos $x$ con un <em>redondeo hacia arriba</em>.
+    </div>
+  </div>
+
+  <div class="theorem panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Teorema</h3>
+    </div>
+    <div class="panel-body">
+  Sea $fl(x)$ el número flotante de 32-bits más cercano al número $x$. El error relativo al redondear el número es 
+\[\left|\frac{x - fl(x)}{x}\right|,\]
+y una cota para el error relativo es $2^{-24}$.
+    </div>
+  </div>
+
+  <div class="theorem panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Teorema</h3>
+    </div>
+    <div class="panel-body">
+  Si en lugar de seleccionar el flotante más cercano utilizamos redondeo hacia abajo, la cota para el error es $2^{-23}$.
+    </div>
+  </div>
+
+
 
 \nocite{*}
 \bibliography{notes}{}
 \bibliographystyle{plain}
     </div>
   </div>
-
-
-
-
-
 </section>
   </section>
 </body>
