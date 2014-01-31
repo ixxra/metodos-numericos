@@ -1,0 +1,64 @@
+\section{Ecuaciones no lineales de una variable}
+
+\subsection{Método de la bisección}
+
+\begin{theorem}
+  Sea $f: [a, b] \to \R$ una función continua, tal que 
+\[f(a)\cdot f(b) < 0,\]
+entonces, existe un número $c \in (a, b)$, tal que $f(c) = 0$.
+\end{theorem}
+
+\begin{theorem}
+  Sean $\{a_n\}$ y $\{b_n\}$ dos sucesiones, la primera no decreciente, y la segunda no creciente, tales que $a_n \leq b_n$ y tal que $\lim (b_n - a_n) = 0$, entonces la intersección $\cap [a_n, b_n]$ es no vacía y consiste de un único punto.
+\end{theorem}
+
+La consecuencia de estos dos teoremas es que el \emph{algoritmo de la bisección} siempre converge. (\emph{porqué?})
+
+\begin{theorem}
+  En aritmética de punto flotante doble, el algoritmo de la bisección converge en a lo más 52 pasos.
+\end{theorem}
+
+\subsection{Contracciones y el teorema de punto fijo}
+
+\begin{definition}
+  Sean $f: [a, b] \to [a, b]$ una función continua, $p \in (a, b)$ y $\lambda$ una constante positiva menor que una unidad. $f$ es una \emph{contracción alrededor de $p$}, si satisface que 
+\[|f(x) - p| \leq \lambda |x - p|.\]  
+\end{definition}
+
+\begin{definition}
+  Si $f(x) = x$, entonces se dice que $x$ es un punto fijo de $f$.
+\end{definition}
+
+\begin{proposition}
+  Si $f: [a, b] \to [a, b]$ es continua, entonces posee al menos un punto fijo.
+\end{proposition}
+
+\begin{proposition}
+  Si $f:[a, b] \to [a, b]$ es una contracción alrededor de $p$, entonces $p$ es el único punto fijo de $f$.
+\end{proposition}
+
+\begin{theorem}
+  Si $f$ es una contracción de $[a, b]$, y $x_0 \in [a, b]$, entonces la suceción definida por 
+\[x_n = f(x_{n -1})\]
+converge al único punto fijo de la función.
+\end{theorem}
+
+El teorema anterior nos da la pauta para definir un algoritmo para encontrar un punto fijo de una función continua en un intervalo, en la próxima sección se verá como se pueden utilizar estos resultados para mejorar la velocidad de convergencia de los algoritmos para hallar raices. Como los siguientes teoremas muestran, para poder estimar la velocidad de convergencia, es necesario tener en cuenta la \emph{suavidad} de la función, es decir, cuantas veces es diferenciable.
+
+\begin{definition}
+  Una función $f:[a, b] \to \R$ es de clase $C^r[a, b]$ si es derivable $r$ veces, cada una de estas derivadas es continua en $(a, b)$, y $f$ misma es continua en $[a, b]$.
+\end{definition}
+
+\begin{definition}
+  Si $f$ es derivable indefinidamente, se dice que es de clase $C^\infty[a, b]$, o tambien que $f$ es suave.
+\end{definition}
+
+% \begin{definition}
+%   Dos funciones $f$ y $g$ son comparables a orden $n$ en el infinito, si existen una constante $N$ y un número $L$ tales que 
+
+% \end{definition}
+
+
+%%% Local Variables:
+%%% TeX-master: "notes"
+%%% End:

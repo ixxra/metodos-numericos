@@ -30,8 +30,12 @@ PREAMBLE = '<!DOCTYPE html>
 
 #src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 
-LOCALE = {'theorem' => "Teorema", 'exercise' => "Ejercicio", 
-    'definition' => "Definición", 'remark' => "Comentario"}
+LOCALE = {'theorem' => "Teorema",
+          'proposition' => "Proposición",
+          'exercise' => "Ejercicio", 
+          'definition' => "Definición", 
+          'remark' => "Comentario",
+          'proof' => "Demostración"}
 
 
 puts PREAMBLE
@@ -41,7 +45,8 @@ ARGF.each do |line|
     line = CGI.escapeHTML(line)
     line.gsub!(/\\emph{([^}]*)}/, '<em>\1</em>')
     line.gsub!(/\\textbf{([^}]*)}/, '<strong>\1</strong>')
-    line.gsub!(/\\textbackslash+/, "\\")
+    line.gsub!(/\\textbackslash\s+/, "\\")
+    line.gsub!(/\\\\/,  "\n")
 
     if line =~ /\\documentclass/
         puts "<section class=\"container\">"

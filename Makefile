@@ -2,11 +2,11 @@ PARSER_PATH = "src/parser/tex2html.rb"
 PARSER = ruby ${PARSER_PATH}
 
 notes:
-	cd latex && pdflatex -shell-escape 01-preliminares
-	cd latex && bibtex 01-preliminares
-	cd latex && pdflatex -shell-escape 01-preliminares
-	cd latex && pdflatex -shell-escape 01-preliminares
-	mv latex/01-preliminares.pdf pdf/
+	cd latex && pdflatex -shell-escape notes
+	cd latex && bibtex notes
+	cd latex && pdflatex -shell-escape notes
+	cd latex && pdflatex -shell-escape notes
+	mv latex/notes.pdf pdf/
 	
 
 .PHONY : html clean
